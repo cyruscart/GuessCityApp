@@ -15,8 +15,8 @@
 		6EFBD7B926EC95C800D04756 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6EFBD7B726EC95C800D04756 /* LaunchScreen.storyboard */; };
 		6EFBDAC126EF820200D04756 /* Result.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6EFBDABF26EF820200D04756 /* Result.storyboard */; };
 		6EFBDAC626EF825300D04756 /* AboutApp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6EFBDAC426EF825300D04756 /* AboutApp.storyboard */; };
-		882D775A26EFBC6B004D8685 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882D775926EFBC6B004D8685 /* City.swift */; };
-		882D775D26EFBC85004D8685 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882D775C26EFBC85004D8685 /* DataManager.swift */; };
+		882D775F26EFCF0C004D8685 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882D775E26EFCF0C004D8685 /* DataManager.swift */; };
+		882D776126EFCF39004D8685 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882D776026EFCF39004D8685 /* City.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,8 +30,8 @@
 		6EFBD7BA26EC95C800D04756 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6EFBDAC026EF820200D04756 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = GuessCityApp/Storyboards/Base.lproj/Result.storyboard; sourceTree = "<group>"; };
 		6EFBDAC526EF825300D04756 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = GuessCityApp/Storyboards/Base.lproj/AboutApp.storyboard; sourceTree = "<group>"; };
-		882D775926EFBC6B004D8685 /* City.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = City.swift; path = "../../../../Обучение SWIFT/Свифтбук/2.22/Lesson 2.8/HW2.8/GuessCityApp/GuessCityApp/Models/City.swift"; sourceTree = "<group>"; };
-		882D775C26EFBC85004D8685 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataManager.swift; path = "../../../../Обучение SWIFT/Свифтбук/2.22/Lesson 2.8/HW2.8/GuessCityApp/GuessCityApp/Services/DataManager.swift"; sourceTree = "<group>"; };
+		882D775E26EFCF0C004D8685 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		882D776026EFCF39004D8685 /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,7 +114,7 @@
 		882D775826EFBC2E004D8685 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				882D775926EFBC6B004D8685 /* City.swift */,
+				882D776026EFCF39004D8685 /* City.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -122,7 +122,7 @@
 		882D775B26EFBC78004D8685 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				882D775C26EFBC85004D8685 /* DataManager.swift */,
+				882D775E26EFCF0C004D8685 /* DataManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -200,9 +200,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				6EFBD7B126EC95C700D04756 /* MainViewController.swift in Sources */,
-				882D775D26EFBC85004D8685 /* DataManager.swift in Sources */,
+				882D775F26EFCF0C004D8685 /* DataManager.swift in Sources */,
+				882D776126EFCF39004D8685 /* City.swift in Sources */,
 				6EFBD7AD26EC95C700D04756 /* AppDelegate.swift in Sources */,
-				882D775A26EFBC6B004D8685 /* City.swift in Sources */,
 				6EFBD7AF26EC95C700D04756 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
