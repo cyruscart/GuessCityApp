@@ -25,9 +25,9 @@ class MainViewController: UIViewController {
     private var currentQuestion = 0
     private var amountOfQuestion = 10
     private var cities: [City]!
-    private var wrongAnswers: [City] = []
-    var images: [UIImage] = [UIImage(named: "moscow")!, UIImage(named: "spb")!]
     
+    // wrongAnswers - массив с неправильными ответами, для передачи на экран результатов.
+    private var wrongAnswers: [City] = []
     private let primaryColor = UIColor(
         red: 255/255,
         green: 255/255,
@@ -70,7 +70,7 @@ class MainViewController: UIViewController {
         firstStackView.isHidden = true
         secondStackView.isHidden = false
         questionProgressView.isHidden = false
-        cityImageView.image = images[currentQuestion]
+        cityImageView.image = UIImage(named: "\(cities[currentQuestion].image)")
         updateButtons(current: currentQuestion)
     }
     
@@ -99,6 +99,7 @@ extension MainViewController {
         cityNames.append(cities[current].name)
 
         while cityNames.count != 4 {
+            // listOfCities - массив с названиями городов в сервисном слое, сделайте его, плиз, побольше чем всего городов, чтобы варианты не часто повторялись
             let randomName = listOfCities.randomElement()!
             if !cityNames.contains(randomName) {
                 cityNames.append(randomName)
@@ -129,8 +130,8 @@ extension MainViewController {
     }
 
     private func flipCityImage(current question: Int) {
-        cityImageView.image = images[question]
-        nextCityImageView.image = images[question + 1]
+        cityImageView.image = UIImage(named: "\(cities[currentQuestion].image)")
+        nextCityImageView.image = UIImage(named: "\(cities[currentQuestion + 1].image)")
         
         UIView.transition(from: cityImageView, to: nextCityImageView, duration: 0.6, options:[ .curveEaseOut, .transitionFlipFromLeft])
     }
