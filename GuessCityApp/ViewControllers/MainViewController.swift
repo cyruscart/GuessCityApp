@@ -66,7 +66,6 @@ class MainViewController: UIViewController {
     }
     
     @IBAction func startButtonPressed() {
-        cities = citiesList
         firstStackView.isHidden = true
         secondStackView.isHidden = false
         questionProgressView.isHidden = false
