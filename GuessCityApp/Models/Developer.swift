@@ -24,13 +24,13 @@ extension Developer {
         
         var developers: [Developer] = []
         
-        let names = DataDevelopers.developers.names
-        let surnames = DataDevelopers.developers.surnames
-        let cities = DataDevelopers.developers.cities
-        let ages = DataDevelopers.developers.ages
-        let emails = DataDevelopers.developers.emails
-        let futurePositions = DataDevelopers.developers.futurePositions
-        let telegrams = DataDevelopers.developers.telegrams
+        let names = DataDeveloper.developers.names
+        let surnames = DataDeveloper.developers.surnames
+        let cities = DataDeveloper.developers.cities
+        let ages = DataDeveloper.developers.ages
+        let emails = DataDeveloper.developers.emails
+        let futurePositions = DataDeveloper.developers.futurePositions
+        let telegrams = DataDeveloper.developers.telegrams
         
         let countOfIteration = min(names.count, surnames.count, emails.count)
         

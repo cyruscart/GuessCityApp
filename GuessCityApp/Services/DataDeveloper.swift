@@ -1,13 +1,13 @@
 //
-//  DataManager.swift
+//  DataDeveloper.swift
 //  GuessCityApp
 //
 //  Created by Анатолий Миронов on 11.09.2021.
 //
 
-
-class DataDevelopers {
-    static let developers = DataDevelopers()
+class DataDeveloper {
+    
+    static let developers = DataDeveloper()
     
     let names = ["Кирилл", "Артём", "Анатолий"]
     let surnames = ["Телегин", "Павлов", "Миронов"]

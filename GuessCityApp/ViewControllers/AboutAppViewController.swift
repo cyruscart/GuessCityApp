@@ -43,6 +43,7 @@ class AboutAppViewController: UITableViewController {
                 cell.developersLabel.text = "Разработчики:"
                 
                 return cell
+                
             } else {
                 fallthrough
             }
