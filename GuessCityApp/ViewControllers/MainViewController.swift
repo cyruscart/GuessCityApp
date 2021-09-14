@@ -22,19 +22,21 @@ class MainViewController: UIViewController {
     
     @IBOutlet var answerButtons: [UIButton]!
     
-    private var currentQuestion = 0
-    private var amountOfQuestion = 10
-    private var cities: [City]!
-    
+    var cities: [City]!
     var isOddImage = true
     
+    private var currentQuestion = 0
+    private var amountOfQuestion = 10
+    
     private var wrongAnswers: [City] = []
+    
     private let primaryColor = UIColor(
         red: 255/255,
         green: 255/255,
         blue: 255/255,
         alpha: 1
     )
+    
     private let secondaryColor = UIColor(
         red: 159/255,
         green: 204/255,
@@ -44,10 +46,10 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         view.addVerticalGradientLayer(topColor: primaryColor, bottomColor: secondaryColor)
-        for answerBotton in answerButtons{
-            answerBotton.layer.cornerRadius = 7
-        }
+        
+        answerButtons.forEach{$0.layer.cornerRadius = 7}
         
         cityImageView.layer.cornerRadius = 13
         nextCityImageView.layer.cornerRadius = 13
@@ -56,24 +58,23 @@ class MainViewController: UIViewController {
         questionProgressView.isHidden = true
         secondStackView.isHidden = true
         
-        amountOfQuestionSlider.value = Float(amountOfQuestion)
-        amountOfQuestionLabel.text = String(amountOfQuestion)
+        amountOfQuestionSlider.value = amountOfQuestionSlider.maximumValue / 2
+        amountOfQuestionLabel.text = String(lrintf(amountOfQuestionSlider.value))
         
     }
     
     @IBAction func amountOfQuestionsSliderMoved() {
-        amountOfQuestion = Int(amountOfQuestionSlider.value)
+        amountOfQuestion = lrintf(amountOfQuestionSlider.value)
         amountOfQuestionLabel.text = String(amountOfQuestion)
     }
     
     @IBAction func startButtonPressed() {
-        firstStackView.isHidden = true
-        secondStackView.isHidden = false
-        questionProgressView.isHidden = false
-        cities = City.getCities(amountOfQuestions: amountOfQuestion)
-        cityImageView.image = UIImage(named: "\(cities[currentQuestion].image)")
-        updateButtons(current: currentQuestion)
+        for view in [firstStackView, secondStackView, questionProgressView] {
+            view?.isHidden.toggle()
+        }
         
+        cityImageView.image = UIImage(named: "\(cities[currentQuestion].image)")
+        updateButtons(cityNamesList: createCityNameListForButtons())
     }
     
     @IBAction func answerButtonPressed(_ sender: UIButton) {
@@ -83,10 +84,14 @@ class MainViewController: UIViewController {
         }
         
         if currentQuestion < amountOfQuestion - 1 {
-            nextCityImageView.image = UIImage(named: "\(cities[currentQuestion + 1].image)")
             flipCityImage(current: currentQuestion)
+            
             currentQuestion += 1
-            updateButtons(current: currentQuestion)
+            
+            nextCityImageView.image = UIImage(named: "\(cities[currentQuestion].image)")
+            
+            updateButtons(cityNamesList: createCityNameListForButtons())
+            
             cityImageView.image = UIImage(named: "\(cities[currentQuestion].image)")
         } else {
             performSegue(withIdentifier: "showResult", sender: nil)
@@ -97,28 +102,29 @@ class MainViewController: UIViewController {
 //MARK: - Private functions
 extension MainViewController {
     
-    private func createCityNameListForButtons(current: Int) -> [String] {
-        var cityNames: [String] = []
-        cityNames.append(cities[current].name)
+    private func updateButtons(cityNamesList: [String]) {
+        let cityNames = cityNamesList
         
-        while cityNames.count != 4 {
-            let randomName = DataManager.shared.cityNamesList.randomElement()!
-            if !cityNames.contains(randomName) {
-                cityNames.append(randomName)
+        for (answerButton, cityName) in zip(answerButtons, cityNames) {
+            answerButton.setTitle(cityName, for: .normal)
+        }
+        
+        updateProgressView()
+    }
+    
+    private func createCityNameListForButtons() -> [String] {
+        var cityNames: [String] = []
+        
+        cityNames.append(cities[currentQuestion].name)
+        let cityNamesForAnswers = DataManager.shared.cityNamesList.shuffled()
+        
+        for index in 0..<cityNamesForAnswers.count {
+            if cityNames[0] != cityNamesForAnswers[index] && cityNames.count != 4 {
+                cityNames.append(cityNamesForAnswers[index])
             }
         }
         
         return cityNames.shuffled()
-    }
-    
-    private func updateButtons(current question: Int) {
-        let cityNames = createCityNameListForButtons(current: question)
-        var name = 0
-        for answerButton in answerButtons {
-            answerButton.setTitle(cityNames[name], for: .normal)
-            name += 1
-        }
-        updateProgressView()
     }
     
     private func isAnswerCorrect(button: UIButton) -> Bool {
@@ -126,7 +132,7 @@ extension MainViewController {
     }
     
     private func updateProgressView () {
-        let progressViewValue = (Float(currentQuestion) + 1) / Float(amountOfQuestion)
+        let progressViewValue = Float(currentQuestion + 1) / Float(amountOfQuestion)
         questionProgressView.setProgress(progressViewValue, animated: true)
     }
     
