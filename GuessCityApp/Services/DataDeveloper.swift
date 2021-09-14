@@ -7,20 +7,66 @@
 
 class DataDeveloper {
     
-    static let developers = DataDeveloper()
+    static let developers = DataDeveloper.getDevelopersList()
     
-    let names = ["Кирилл", "Артём", "Анатолий"]
-    let surnames = ["Телегин", "Павлов", "Миронов"]
-    let cities = ["Омск", "Тюмень", "Москва"]
-    let ages = ["32", "30", "27"]
-    let emails = ["mr.tks@yandex.ru", "pavlov.tema@gmail.com", "x7.7@bk.ru"]
-    let futurePositions = [
-        "Будущий junior iOS-developer",
-        "Будущий junior iOS-developer",
-        "Будущий junior iOS-developer"
-    ]
+    let name: String
+    let surname: String
+    let city: String
+    let age: Int
+    let email: String
+    let futurePosition: String
+    let telegram: String
     
-    let telegrams = ["@mr_tks", "@pavlov_art", "@Anatolii_Mir"]
+    static func getDevelopersList() -> [DataDeveloper] {
+        
+        let developersList = [
+            DataDeveloper(
+                name: "Кирилл",
+                surname: "Телегин",
+                city: "Омск",
+                age: 32,
+                email: "mr.tks@yandex.ru",
+                futurePosition: "Будущий junior iOS-developer",
+                telegram: "@mr_tks"
+            ),
+            DataDeveloper(
+                name: "Артём",
+                surname: "Павлов",
+                city: "Тюмень",
+                age: 30,
+                email: "pavlov.tema@gmail.com",
+                futurePosition: "Будущий junior iOS-developer",
+                telegram: "@pavlov_art"
+            ),
+            DataDeveloper(
+                name: "Анатолий",
+                surname: "Миронов",
+                city: "Москва",
+                age: 27,
+                email: "x7.7@bk.ru",
+                futurePosition: "Будущий junior iOS-developer",
+                telegram: "@Anatolii_Mir"
+            )
+        ]
+        
+        return developersList
+    }
     
-    private init() {}
+    private init(
+        name: String,
+        surname: String,
+        city: String,
+        age: Int,
+        email: String,
+        futurePosition: String,
+        telegram: String
+    ) {
+        self.name = name
+        self.surname = surname
+        self.city = city
+        self.age = age
+        self.email = email
+        self.futurePosition = futurePosition
+        self.telegram = telegram
+    }
 }
