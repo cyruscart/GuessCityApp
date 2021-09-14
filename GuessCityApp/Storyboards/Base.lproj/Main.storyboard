@@ -196,10 +196,10 @@
             </objects>
             <point key="canvasLocation" x="28.985507246376812" y="88.392857142857139"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Tab Bar View Controller-->
         <scene sceneID="Ccc-Wq-xwv">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="lhB-TE-rLU" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="lhB-TE-rLU" customClass="TabBarViewController" customModule="GuessCityApp" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="gAN-9B-MZ3"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="trS-LS-4wc">

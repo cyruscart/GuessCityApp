@@ -20,7 +20,7 @@ class AboutAppViewController: UITableViewController {
         tableView.tableFooterView = UIView()
     }
     
-    private let developers = Developer.getDevelopersList()
+    var developers: [Developer]!
     
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
