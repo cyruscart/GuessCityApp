@@ -9,7 +9,7 @@ struct Developer {
     let name: String
     let surname: String
     let city: String
-    let age: String
+    let age: Int
     let email: String
     let futurePosition: String
     let telegram: String
@@ -24,26 +24,16 @@ extension Developer {
         
         var developers: [Developer] = []
         
-        let names = DataDeveloper.developers.names
-        let surnames = DataDeveloper.developers.surnames
-        let cities = DataDeveloper.developers.cities
-        let ages = DataDeveloper.developers.ages
-        let emails = DataDeveloper.developers.emails
-        let futurePositions = DataDeveloper.developers.futurePositions
-        let telegrams = DataDeveloper.developers.telegrams
-        
-        let countOfIteration = min(names.count, surnames.count, emails.count)
-        
-        for index in 0..<countOfIteration {
+        for developer in DataDeveloper.getDevelopersList() {
             developers.append(
                 Developer(
-                    name: names[index],
-                    surname: surnames[index],
-                    city: cities[index],
-                    age: ages[index],
-                    email: emails[index],
-                    futurePosition: futurePositions[index],
-                    telegram: telegrams[index]
+                    name: developer.name,
+                    surname: developer.surname,
+                    city: developer.city,
+                    age: developer.age,
+                    email: developer.email,
+                    futurePosition: developer.futurePosition,
+                    telegram: developer.telegram
                 )
             )
         }
