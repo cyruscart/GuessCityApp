@@ -4,22 +4,26 @@
 //
 //  Created by iMac on 13.09.2021.
 //
-
 import Foundation
 
 struct City {
-    let titleOfCity: String
+
+    let name: String
+    let image: String
+    let description: String
+    
+}
+
+extension City {
     
     static func getCities(amountOfQuestions: Int) -> [City] {
-       
         var cities: [City] = []
-        let titlesOfCities = DataManager.shared.cities.shuffled()
-        
-        for index in 0 ..< amountOfQuestions {
-            //let city = City(titleOfCity: titlesOfCities[index])
-            cities.append(City(titleOfCity: titlesOfCities[index]))
+        var indexCity = 0
+        let allCities = DataManager.shared.cities.shuffled()
+        for _ in 1...amountOfQuestions {
+            cities.append(allCities[indexCity])
+            indexCity += 1
         }
         return cities
-        //для сохранения
     }
 }
