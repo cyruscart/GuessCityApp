@@ -19,6 +19,7 @@
 		6EFBDACD26F2457900D04756 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFBDACC26F2457900D04756 /* Settings.swift */; };
 		882D775F26EFCF0C004D8685 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882D775E26EFCF0C004D8685 /* DataManager.swift */; };
 		882D776126EFCF39004D8685 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882D776026EFCF39004D8685 /* City.swift */; };
+		882D776726F27874004D8685 /* ResultTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882D776626F27874004D8685 /* ResultTableViewController.swift */; };
 		9C16986B26F12A820024CBF1 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C16986A26F12A820024CBF1 /* TabBarViewController.swift */; };
 		9CFFEF5B26EFD9D5000E839F /* AboutAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFFEF5926EFD9D5000E839F /* AboutAppViewController.swift */; };
 		9CFFEF5C26EFD9D5000E839F /* DeveloperDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFFEF5A26EFD9D5000E839F /* DeveloperDetailViewController.swift */; };
@@ -42,6 +43,7 @@
 		6EFBDACC26F2457900D04756 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Settings.swift; path = ../../../../../Documents/Settings.swift; sourceTree = "<group>"; };
 		882D775E26EFCF0C004D8685 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		882D776026EFCF39004D8685 /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
+		882D776626F27874004D8685 /* ResultTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultTableViewController.swift; sourceTree = "<group>"; };
 		9C16986A26F12A820024CBF1 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		9CFFEF5926EFD9D5000E839F /* AboutAppViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutAppViewController.swift; sourceTree = "<group>"; };
 		9CFFEF5A26EFD9D5000E839F /* DeveloperDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeveloperDetailViewController.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				9C16986A26F12A820024CBF1 /* TabBarViewController.swift */,
 				9CFFEF5A26EFD9D5000E839F /* DeveloperDetailViewController.swift */,
 				6EFBDAC726F2219300D04756 /* SettingsViewController.swift */,
+				882D776626F27874004D8685 /* ResultTableViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -227,6 +230,7 @@
 				9CFFEF5C26EFD9D5000E839F /* DeveloperDetailViewController.swift in Sources */,
 				6EFBD7B126EC95C700D04756 /* MainViewController.swift in Sources */,
 				6EFBDACD26F2457900D04756 /* Settings.swift in Sources */,
+				882D776726F27874004D8685 /* ResultTableViewController.swift in Sources */,
 				6EFBDAC826F2219300D04756 /* SettingsViewController.swift in Sources */,
 				882D775F26EFCF0C004D8685 /* DataManager.swift in Sources */,
 				9CFFEF5B26EFD9D5000E839F /* AboutAppViewController.swift in Sources */,
