@@ -135,9 +135,9 @@
 		882D775826EFBC2E004D8685 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				6EFBDACC26F2457900D04756 /* Settings.swift */,
 				9CFFEF5F26EFDB68000E839F /* Developer.swift */,
 				882D776026EFCF39004D8685 /* City.swift */,
-				6EFBDACC26F2457900D04756 /* Settings.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
