@@ -10,8 +10,6 @@ import UIKit
 class MainViewController: UIViewController {
     
     @IBOutlet weak var firstStackView: UIStackView!
-    @IBOutlet weak var amountOfQuestionLabel: UILabel!
-    @IBOutlet weak var amountOfQuestionSlider: UISlider!
     
     @IBOutlet weak var secondStackView: UIStackView!
     @IBOutlet weak var cityImageView: UIImageView!
@@ -26,7 +24,6 @@ class MainViewController: UIViewController {
     var isOddImage = true
     
     private var currentQuestion = 0
-    private var amountOfQuestion = 10
     
     private var wrongAnswers: [City] = []
     
@@ -38,9 +35,9 @@ class MainViewController: UIViewController {
     )
     
     private let secondaryColor = UIColor(
-        red: 159/255,
-        green: 204/255,
-        blue: 231/255,
+        red: 25/255,
+        green: 33/255,
+        blue: 78/255,
         alpha: 1
     )
     
@@ -58,15 +55,8 @@ class MainViewController: UIViewController {
         questionProgressView.isHidden = true
         secondStackView.isHidden = true
         
-        amountOfQuestionSlider.value = amountOfQuestionSlider.maximumValue / 2
-        amountOfQuestionLabel.text = String(lrintf(amountOfQuestionSlider.value))
-        
     }
     
-    @IBAction func amountOfQuestionsSliderMoved() {
-        amountOfQuestion = lrintf(amountOfQuestionSlider.value)
-        amountOfQuestionLabel.text = String(amountOfQuestion)
-    }
     
     @IBAction func startButtonPressed() {
         for view in [firstStackView, secondStackView, questionProgressView] {
@@ -75,26 +65,34 @@ class MainViewController: UIViewController {
         
         cityImageView.image = UIImage(named: "\(cities[currentQuestion].image)")
         updateButtons(cityNamesList: createCityNameListForButtons())
+
+        navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     @IBAction func answerButtonPressed(_ sender: UIButton) {
         
         if !isAnswerCorrect(button: sender) {
             wrongAnswers.append(cities[currentQuestion])
+            sender.backgroundColor = .systemRed
+        } else {
+            sender.backgroundColor = .systemGreen
         }
         
-        if currentQuestion < amountOfQuestion - 1 {
+        if currentQuestion < Settings.shared.amountOfQuestion - 1 {
             flipCityImage(current: currentQuestion)
+            
+            UIView.animate(withDuration: 0.6,delay: 0.6, animations: {sender.backgroundColor = .darkGray})
+            
+            updateProgressView()
             
             currentQuestion += 1
             
             nextCityImageView.image = UIImage(named: "\(cities[currentQuestion].image)")
             
-            updateButtons(cityNamesList: createCityNameListForButtons())
-            
             cityImageView.image = UIImage(named: "\(cities[currentQuestion].image)")
         } else {
             performSegue(withIdentifier: "showResult", sender: nil)
+            navigationController?.setNavigationBarHidden(false, animated: false)
         }
     }
 }
@@ -108,8 +106,6 @@ extension MainViewController {
         for (answerButton, cityName) in zip(answerButtons, cityNames) {
             answerButton.setTitle(cityName, for: .normal)
         }
-        
-        updateProgressView()
     }
     
     private func createCityNameListForButtons() -> [String] {
@@ -132,7 +128,7 @@ extension MainViewController {
     }
     
     private func updateProgressView () {
-        let progressViewValue = Float(currentQuestion + 1) / Float(amountOfQuestion)
+        let progressViewValue = Float(currentQuestion + 1) / Float(Settings.shared.amountOfQuestion)
         questionProgressView.setProgress(progressViewValue, animated: true)
     }
     
@@ -144,8 +140,9 @@ extension MainViewController {
         
         UIView.transition(from: fromImage!,
                           to: toImage!,
-                          duration: 0.6,
-                          options:[.curveEaseOut, .transitionFlipFromLeft, .showHideTransitionViews]
+                          duration: 0.8,
+                          options:[.curveEaseOut, .transitionFlipFromLeft, .showHideTransitionViews], completion: {
+                            _ in self.updateButtons(cityNamesList: self.createCityNameListForButtons())}
         )
     }
 }
