@@ -96,6 +96,8 @@ class MainViewController: UIViewController {
         } else {
             performSegue(withIdentifier: "showResult", sender: nil)
         }
+        print(cityImageView.image)
+        print(nextCityImageView.image)
     }
 }
 
