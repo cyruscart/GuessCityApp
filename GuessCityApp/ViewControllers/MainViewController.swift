@@ -57,18 +57,13 @@ class MainViewController: UIViewController {
         
     }
     
-    
     @IBAction func startButtonPressed() {
-        navigationItem.hidesBackButton = true
-        
         for view in [firstStackView, secondStackView, questionProgressView] {
             view?.isHidden.toggle()
         }
         
         cityImageView.image = UIImage(named: "\(cities[currentQuestion].image)")
         updateButtons(cityNamesList: createCityNameListForButtons())
-
-        navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     @IBAction func answerButtonPressed(_ sender: UIButton) {
