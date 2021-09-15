@@ -75,29 +75,33 @@ class MainViewController: UIViewController {
         
         cityImageView.image = UIImage(named: "\(cities[currentQuestion].image)")
         updateButtons(cityNamesList: createCityNameListForButtons())
+        
     }
     
     @IBAction func answerButtonPressed(_ sender: UIButton) {
         
         if !isAnswerCorrect(button: sender) {
             wrongAnswers.append(cities[currentQuestion])
+            sender.backgroundColor = .systemRed
+        } else {
+            sender.backgroundColor = .systemGreen
         }
         
         if currentQuestion < amountOfQuestion - 1 {
             flipCityImage(current: currentQuestion)
             
+            UIView.animate(withDuration: 0,delay: 0.5, animations: {sender.backgroundColor = .gray})
+            
+            updateProgressView()
+            
             currentQuestion += 1
             
             nextCityImageView.image = UIImage(named: "\(cities[currentQuestion].image)")
-            
-            updateButtons(cityNamesList: createCityNameListForButtons())
             
             cityImageView.image = UIImage(named: "\(cities[currentQuestion].image)")
         } else {
             performSegue(withIdentifier: "showResult", sender: nil)
         }
-        print(cityImageView.image)
-        print(nextCityImageView.image)
     }
 }
 
@@ -110,8 +114,6 @@ extension MainViewController {
         for (answerButton, cityName) in zip(answerButtons, cityNames) {
             answerButton.setTitle(cityName, for: .normal)
         }
-        
-        updateProgressView()
     }
     
     private func createCityNameListForButtons() -> [String] {
@@ -146,8 +148,9 @@ extension MainViewController {
         
         UIView.transition(from: fromImage!,
                           to: toImage!,
-                          duration: 0.6,
-                          options:[.curveEaseOut, .transitionFlipFromLeft, .showHideTransitionViews]
+                          duration: 0.7,
+                          options:[.curveEaseOut, .transitionFlipFromLeft, .showHideTransitionViews], completion: {
+                            _ in self.updateButtons(cityNamesList: self.createCityNameListForButtons())}
         )
     }
 }

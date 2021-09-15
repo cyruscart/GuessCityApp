@@ -91,7 +91,7 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="P8g-3e-N2Y">
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="P8g-3e-N2Y">
                                 <rect key="frame" x="0.0" y="44" width="320" height="4"/>
                                 <color key="progressTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </progressView>
@@ -155,6 +155,11 @@
                             <constraint firstItem="HdH-Ec-tMb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="sK0-Zl-tba"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="53U-S9-yxY" secondAttribute="bottom" constant="40" id="vZf-DJ-dsf"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="HdH-Ec-tMb"/>
+                            </mask>
+                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="GuesCity" image="questionmark" catalog="system" id="KEx-ph-uRk"/>
                     <navigationItem key="navigationItem" id="o2n-Zn-XoQ"/>
