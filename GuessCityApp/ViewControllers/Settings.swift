@@ -6,8 +6,6 @@
 //  Created by Кирилл on 15.09.2021.
 //
 
-import Foundation
-
 class Settings {
     
     static let shared = Settings()
@@ -17,4 +15,3 @@ class Settings {
     private init() {}
 }
 
-//

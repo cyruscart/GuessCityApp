@@ -59,6 +59,8 @@ class MainViewController: UIViewController {
     
     
     @IBAction func startButtonPressed() {
+        navigationItem.hidesBackButton = true
+        
         for view in [firstStackView, secondStackView, questionProgressView] {
             view?.isHidden.toggle()
         }
@@ -115,8 +117,10 @@ extension MainViewController {
         let cityNamesForAnswers = DataManager.shared.cityNamesList.shuffled()
         
         for index in 0..<cityNamesForAnswers.count {
-            if cityNames[0] != cityNamesForAnswers[index] && cityNames.count != 4 {
+            if cityNames.first != cityNamesForAnswers[index] && cityNames.count != 4 {
                 cityNames.append(cityNamesForAnswers[index])
+            } else if cityNames.count == 4 {
+                break
             }
         }
         
