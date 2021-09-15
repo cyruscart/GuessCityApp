@@ -16,14 +16,15 @@ struct City {
 
 extension City {
     
-    static func getCities(amountOfQuestions: Int) -> [City] {
+    static func getCities() -> [City] {
         var cities: [City] = []
-        var indexCity = 0
+        
         let allCities = DataManager.shared.cities.shuffled()
-        for _ in 1...amountOfQuestions {
-            cities.append(allCities[indexCity])
-            indexCity += 1
+        
+        for city in allCities {
+            cities.append(city)
         }
+        
         return cities
     }
 }
