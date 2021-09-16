@@ -46,6 +46,7 @@ class MainViewController: UIViewController {
     
     
     override func viewWillAppear(_ animated: Bool) {
+        
         if isNavBarNeedShow {
             navigationController?.setNavigationBarHidden(false, animated: false)
         } else {
