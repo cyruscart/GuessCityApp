@@ -19,19 +19,41 @@ class ResultTableViewController: UITableViewController {
     var numbersOfQuestions: Int = 0
     
     
+    private let primaryColor = UIColor(
+        red: 255/255,
+        green: 255/255,
+        blue: 255/255,
+        alpha: 1
+    )
+    
+    private let secondaryColor = UIColor(
+        red: 25/255,
+        green: 33/255,
+        blue: 78/255,
+        alpha: 1
+    )
+    
+    override func viewWillAppear(_ animated: Bool) {
+        let rightButtonItem = UIBarButtonItem.init(
+              title: "Главный экран",
+              style: .done,
+              target: dismiss(animated:true) ,
+              action: Selector(("rightButtonAction:"))
+        )
+        
+        self.navigationItem.rightBarButtonItem = rightButtonItem
+        self.navigationItem.setHidesBackButton(true, animated: false)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.rowHeight = 50
-        
+        tableView.rowHeight = 70
         tableView.tableFooterView = UIView()
-
-        
     }
-
     
     // MARK: - Table view data source
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let numbersOfWrongQuestions = resultCity.count
         return numbersOfWrongQuestions + 1
@@ -41,20 +63,25 @@ class ResultTableViewController: UITableViewController {
         if indexPath.row == 0 {
             return UITableView.automaticDimension
         } else {
-            return 50
+            return 70
         }
     }
-
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let numbersOfRightQuestions = numbersOfQuestions - resultCity.count
         switch indexPath.row {
         case 0:
             if let cell = tableView.dequeueReusableCell(withIdentifier: "ResultCell", for: indexPath) as? FirstResultCell {
-                cell.resultLabel.text = "Поздравляем! Вы ответили на \(numbersOfRightQuestions) из \(numbersOfQuestions) вопросов!"
+                
+                cell.resultLabel.text = 
+                    """
+                    Поздравляем!!!
+                    Вы ответили правильно на
+                    \(numbersOfRightQuestions) из \(numbersOfQuestions)
+                    вопросов!
+                    """
+                
                 cell.wrongAnswersLabel.text = "Неправильные ответы:"
-                
-                
                 
                 return cell
             } else {
@@ -65,10 +92,11 @@ class ResultTableViewController: UITableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: "WrongAnswersCell", for: indexPath)
             var content = cell.defaultContentConfiguration()
             let wrongQueston = resultCity[indexPath.row - 1]
-
+            
             content.text = wrongQueston.name
             
             content.image = UIImage(named: wrongQueston.image)
+            content.imageProperties.cornerRadius = 13
             
             cell.contentConfiguration = content
             return cell
@@ -79,17 +107,29 @@ class ResultTableViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-
-   
-
-    /*
+    
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        guard let aboutCityVC = segue.destination as? AboutCityViewController else { return }
+        
+        guard let indexPath = tableView.indexPathForSelectedRow else { return }
+        let city = resultCity[indexPath.row - 1]
+        
+        aboutCityVC.aboutCity = city
+        
     }
-    */
+}
+// MARK: - Set background color
 
+extension UIView {
+    func setResultVerticalGradientLayer(topColor: UIColor, bottomColor: UIColor) {
+        let gradient = CAGradientLayer()
+        gradient.frame = bounds
+        gradient.colors = [topColor.cgColor, bottomColor.cgColor]
+        gradient.locations = [0.0, 1.0]
+        gradient.startPoint = CGPoint(x: 0, y: 0)
+        gradient.endPoint = CGPoint(x: 0, y: 1)
+        layer.insertSublayer(gradient, at: 0)
+    }
 }
