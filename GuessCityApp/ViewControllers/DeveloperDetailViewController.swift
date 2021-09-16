@@ -8,7 +8,7 @@
 import UIKit
 
 class DeveloperDetailViewController: UIViewController {
-
+    
     @IBOutlet var fullNameLabel: UILabel!
     @IBOutlet var positionLabel: UILabel!
     @IBOutlet var cityLabel: UILabel!
@@ -34,5 +34,9 @@ class DeveloperDetailViewController: UIViewController {
         ageLabel.text = "Возраст:  \(developer.age)"
         emailLabel.text = "Email:  \(developer.email)"
         telegramLabel.text = "Telegram:  \(developer.telegram)"
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(false, animated: false)
     }
 }

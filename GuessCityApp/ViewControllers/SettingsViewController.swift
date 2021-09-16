@@ -14,9 +14,7 @@ class SettingsViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        view.addVerticalGradientLayer(topColor: primaryColor, bottomColor: secondaryColor)
-        
+                
         questionLabel.text = String(Settings.shared.amountOfQuestion)
         questionSlider.value = Float(Settings.shared.amountOfQuestion)
     }
