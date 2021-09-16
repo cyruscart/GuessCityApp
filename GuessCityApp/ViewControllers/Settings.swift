@@ -14,7 +14,7 @@ class Settings {
     
     var amountOfQuestion = 15
     
-    var cityOptionChoice = CityOption.onlyRus.rawValue
+    var cityOptionChoice = CityOption.all.rawValue
     
     var cityOptions = CityOption.allCases.map {$0.rawValue}
         

@@ -74,7 +74,7 @@ class MainViewController: UIViewController {
         for view in [firstStackView, secondStackView, questionProgressView] {
             view?.isHidden.toggle()
         }
-        
+        cities = City.getCities()
         cityImageView.image = UIImage(named: "\(cities[currentQuestion].image)")
         updateButtons(cityNamesList: createCityNameListForButtons())
         
@@ -130,7 +130,7 @@ extension MainViewController {
         var cityNames: [String] = []
         
         cityNames.append(cities[currentQuestion].name)
-        let cityNamesForAnswers = DataManager.shared.cityNamesList.shuffled()
+        let cityNamesForAnswers = City.getCityList()
         
         for index in 0..<cityNamesForAnswers.count {
             if cityNames.first != cityNamesForAnswers[index] && cityNames.count != 4 {
