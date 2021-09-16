@@ -145,6 +145,12 @@ extension MainViewController {
                             _ in self.updateButtons(cityNamesList: self.createCityNameListForButtons())}
         )
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let resultVC = segue.destination as? ResultTableViewController else { return }
+        resultVC.resultCity = wrongAnswers
+        resultVC.numbersOfQuestions = Settings.shared.amountOfQuestion
+    }
 }
 
 // MARK: - Set background color
