@@ -22,6 +22,10 @@ class AboutAppViewController: UITableViewController {
         tableView.tableFooterView = UIView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
     var developers: [Developer]!
     
     // MARK: - Table view data source
@@ -54,7 +58,7 @@ class AboutAppViewController: UITableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: "developer", for: indexPath)
             var content = cell.defaultContentConfiguration()
             let developer = developers[indexPath.row - 1]
-
+            
             content.text = developer.fullName
             content.textProperties.font = UIFont.systemFont(ofSize: 18.0)
             
@@ -72,15 +76,15 @@ class AboutAppViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
-
+    
     // MARK: - Navigation
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let developerDetailVC = segue.destination as? DeveloperDetailViewController else { return }
-
+        
         guard let indexPath = tableView.indexPathForSelectedRow else { return }
         let developer = developers[indexPath.row - 1]
-
+        
         developerDetailVC.developer = developer
     }
 }

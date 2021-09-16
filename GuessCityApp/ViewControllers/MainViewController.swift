@@ -21,7 +21,10 @@ class MainViewController: UIViewController {
     @IBOutlet var answerButtons: [UIButton]!
     
     var cities: [City]!
-    var isOddImage = true
+    
+    private var isOddImage = true
+    
+    private var isNavBarNeedShow = true
     
     private var currentQuestion = 0
     
@@ -40,6 +43,15 @@ class MainViewController: UIViewController {
         blue: 78/255,
         alpha: 1
     )
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if isNavBarNeedShow {
+            navigationController?.setNavigationBarHidden(false, animated: false)
+        } else {
+            navigationController?.setNavigationBarHidden(true, animated: false)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,6 +76,10 @@ class MainViewController: UIViewController {
         
         cityImageView.image = UIImage(named: "\(cities[currentQuestion].image)")
         updateButtons(cityNamesList: createCityNameListForButtons())
+        
+        navigationController?.setNavigationBarHidden(true, animated: false)
+        
+        isNavBarNeedShow = !isNavBarNeedShow
     }
     
     @IBAction func answerButtonPressed(_ sender: UIButton) {
@@ -87,9 +103,13 @@ class MainViewController: UIViewController {
             nextCityImageView.image = UIImage(named: "\(cities[currentQuestion].image)")
             
             cityImageView.image = UIImage(named: "\(cities[currentQuestion].image)")
+            
         } else {
             performSegue(withIdentifier: "showResult", sender: nil)
+            
             navigationController?.setNavigationBarHidden(false, animated: false)
+            
+            isNavBarNeedShow = !isNavBarNeedShow
         }
     }
 }
@@ -115,7 +135,7 @@ extension MainViewController {
             if cityNames.first != cityNamesForAnswers[index] && cityNames.count != 4 {
                 cityNames.append(cityNamesForAnswers[index])
             } else if cityNames.count == 4 {
-                break
+                break       
             }
         }
         
