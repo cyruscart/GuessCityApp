@@ -57,7 +57,6 @@ class MainViewController: UIViewController {
         
     }
     
-    
     @IBAction func startButtonPressed() {
         for view in [firstStackView, secondStackView, questionProgressView] {
             view?.isHidden.toggle()
@@ -65,8 +64,6 @@ class MainViewController: UIViewController {
         
         cityImageView.image = UIImage(named: "\(cities[currentQuestion].image)")
         updateButtons(cityNamesList: createCityNameListForButtons())
-
-        navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     @IBAction func answerButtonPressed(_ sender: UIButton) {
@@ -115,8 +112,10 @@ extension MainViewController {
         let cityNamesForAnswers = DataManager.shared.cityNamesList.shuffled()
         
         for index in 0..<cityNamesForAnswers.count {
-            if cityNames[0] != cityNamesForAnswers[index] && cityNames.count != 4 {
+            if cityNames.first != cityNamesForAnswers[index] && cityNames.count != 4 {
                 cityNames.append(cityNamesForAnswers[index])
+            } else if cityNames.count == 4 {
+                break
             }
         }
         

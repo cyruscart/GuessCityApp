@@ -15,6 +15,8 @@ class FirstDescriptionCell: UITableViewCell {
 class AboutAppViewController: UITableViewController {
     
     override func viewDidLoad() {
+        super.viewDidLoad()
+        
         tableView.rowHeight = 50
         
         tableView.tableFooterView = UIView()
