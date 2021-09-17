@@ -23,6 +23,8 @@ class AboutAppViewController: UITableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         navigationController?.setNavigationBarHidden(true, animated: false)
     }
     

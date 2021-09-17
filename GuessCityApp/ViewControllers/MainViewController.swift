@@ -44,15 +44,6 @@ class MainViewController: UIViewController {
         alpha: 1
     )
     
-    
-    override func viewWillAppear(_ animated: Bool) {
-        if isNavBarNeedShow {
-            navigationController?.setNavigationBarHidden(false, animated: false)
-        } else {
-            navigationController?.setNavigationBarHidden(true, animated: false)
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -69,12 +60,29 @@ class MainViewController: UIViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        isNavBarNeedShow ?
+            navigationController?.setNavigationBarHidden(false, animated: false):
+            navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let resultVC = segue.destination as? ResultTableViewController else { return }
+        
+        resultVC.resultCity = wrongAnswers
+        resultVC.numbersOfQuestions = Settings.shared.amountOfQuestion
+    }
+    
     @IBAction func startButtonPressed() {
-        for view in [firstStackView, secondStackView, questionProgressView] {
-            view?.isHidden.toggle()
-        }
+        
+        changeShowingStackView()
+        
+        cities = City.getCities()
         
         cityImageView.image = UIImage(named: "\(cities[currentQuestion].image)")
+        
         updateButtons(cityNamesList: createCityNameListForButtons())
         
         navigationController?.setNavigationBarHidden(true, animated: false)
@@ -110,6 +118,8 @@ class MainViewController: UIViewController {
             navigationController?.setNavigationBarHidden(false, animated: false)
             
             isNavBarNeedShow = !isNavBarNeedShow
+            
+            changeShowingStackView()
         }
     }
 }
@@ -129,7 +139,8 @@ extension MainViewController {
         var cityNames: [String] = []
         
         cityNames.append(cities[currentQuestion].name)
-        let cityNamesForAnswers = DataManager.shared.cityNamesList.shuffled()
+        
+        let cityNamesForAnswers = City.getCityList(type: cities[currentQuestion].type)
         
         for index in 0..<cityNamesForAnswers.count {
             if cityNames.first != cityNamesForAnswers[index] && cityNames.count != 4 {
@@ -165,10 +176,10 @@ extension MainViewController {
         )
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let resultVC = segue.destination as? ResultTableViewController else { return }
-        resultVC.resultCity = wrongAnswers
-        resultVC.numbersOfQuestions = Settings.shared.amountOfQuestion
+    private func changeShowingStackView() {
+        for view in [firstStackView, secondStackView, questionProgressView] {
+            view?.isHidden.toggle()
+        }
     }
 }
 

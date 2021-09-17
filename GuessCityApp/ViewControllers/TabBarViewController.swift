@@ -10,7 +10,6 @@ import UIKit
 class TabBarViewController: UITabBarController {
     
     private let developers = Developer.getDevelopersList()
-    private let cities = City.getCities()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,9 +21,7 @@ class TabBarViewController: UITabBarController {
         guard let viewControllers = self.viewControllers else { return }
         
         for viewController in viewControllers {
-            if let mainVC = viewController as? MainViewController {
-                mainVC.cities = cities
-            } else if let aboutAppVC = viewController as? AboutAppViewController {
+            if let aboutAppVC = viewController as? AboutAppViewController {
                 aboutAppVC.developers = developers
             }
         }
