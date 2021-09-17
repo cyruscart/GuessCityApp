@@ -32,7 +32,6 @@ class ResultTableViewController: UITableViewController {
         blue: 78/255,
         alpha: 1
     )
-    
     override func viewWillAppear(_ animated: Bool) {
         let rightButtonItem = UIBarButtonItem.init(
               title: "Главный экран",
