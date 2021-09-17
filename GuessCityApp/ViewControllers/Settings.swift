@@ -14,17 +14,10 @@ class Settings {
     
     var amountOfQuestion = 15
     
-    var cityOptionChoice = CityOption.all.rawValue
+    var cityOptionChoice = CityType.onlyRus.rawValue
     
-    var cityOptions = CityOption.allCases.map {$0.rawValue}
-        
-    
-    private enum CityOption: String, CaseIterable {
-        case onlyRus = "Города России"
-        case onlyForeign = "Зарубежные города"
-        case all = "Все города"
-    }
-    
+    var cityOptions = CityType.allCases.map {$0.rawValue}
+ 
     private init() {}
 }
 

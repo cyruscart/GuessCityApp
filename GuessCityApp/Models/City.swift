@@ -11,6 +11,7 @@ struct City {
     let name: String
     let image: String
     let description: String
+    let type: String
     
 }
 
@@ -24,17 +25,17 @@ extension City {
         let foreignCities = DataManager.shared.foreignCities.shuffled()
         
         switch Settings.shared.cityOptionChoice {
-        case "Города России":
+        case CityType.onlyRus.rawValue:
             for city in russianCities {
                 cities.append(city)
             }
             
-        case "Зарубежные города":
+        case CityType.onlyForeign.rawValue:
             for city in foreignCities {
                 cities.append(city)
             }
             
-        case "Все города":
+        case CityType.all.rawValue:
             for city in allCities {
                 cities.append(city)
             }
@@ -44,30 +45,23 @@ extension City {
         return cities
     }
     
-    static func getCityList() -> [String] {
+    static func getCityList(type: String) -> [String] {
         var cities: [String] = []
-        
-        let allCities = DataManager.shared.cityNamesListAll.shuffled()
+
         let russianCities = DataManager.shared.cityNamesListRus.shuffled()
         let foreignCities = DataManager.shared.cityNamesListForeign.shuffled()
+
+        switch type {
         
-        switch Settings.shared.cityOptionChoice {
-        case "Города России":
+        case CityType.onlyRus.rawValue:
             for city in russianCities {
                 cities.append(city)
             }
             
-        case "Зарубежные города":
-            for city in foreignCities {
-                cities.append(city)
-            }
-            
-        case "Все города":
-            for city in allCities {
-                cities.append(city)
-            }
         default:
-            break
+                for city in foreignCities {
+                    cities.append(city)
+                }
         }
         return cities
     }

@@ -18,28 +18,17 @@ class AmountOfQuestionCell: UITableViewCell {
 
 class SettingsViewController: UITableViewController {
     
-   let settings = ["Города России", "Зарубежные города", "Все города"]
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
-
-    
-    
-    // MARK: - Table view data source
-    
     override func numberOfSections(in tableView: UITableView) -> Int {
         2
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         if section == 0 {
             return 1
         } else {
-            return 3
+            return CityType.allCases.count
         }
-
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -60,13 +49,14 @@ class SettingsViewController: UITableViewController {
                 cell.questionLabel.text = String(Settings.shared.amountOfQuestion)
                 cell.questionSlider.value = Float(Settings.shared.amountOfQuestion)
                 
-               currentCell = cell
+                currentCell = cell
             }
+            
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: "city", for: indexPath)
             
             var content = cell.defaultContentConfiguration()
-             
+            
             content.text = Settings.shared.cityOptions[indexPath.row]
             
             cell.contentConfiguration = content
@@ -78,10 +68,9 @@ class SettingsViewController: UITableViewController {
             }
             
             currentCell = cell
-            }
+        }
         return currentCell
     }
-
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         Settings.shared.cityOptionChoice = Settings.shared.cityOptions[indexPath.row]
