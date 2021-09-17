@@ -11,8 +11,8 @@ class AmountOfQuestionCell: UITableViewCell {
     @IBOutlet weak var questionSlider: UISlider!
     @IBOutlet weak var questionLabel: UILabel!
     @IBAction func sliderMoved() {
-        Settings.shared.amountOfQuestion = Int(questionSlider.value)
-        questionLabel.text = String(Int(Settings.shared.amountOfQuestion))
+        Settings.shared.amountOfQuestion = lrintf(questionSlider.value)
+        questionLabel.text = String(Settings.shared.amountOfQuestion)
     }
 }
 

@@ -10,7 +10,6 @@ import UIKit
 class FirstResultCell: UITableViewCell {
     @IBOutlet var resultLabel: UILabel!
     @IBOutlet var wrongAnswersLabel: UILabel!
-    
 }
 
 class ResultTableViewController: UITableViewController {
@@ -32,16 +31,21 @@ class ResultTableViewController: UITableViewController {
         blue: 78/255,
         alpha: 1
     )
+    
     override func viewWillAppear(_ animated: Bool) {
         let rightButtonItem = UIBarButtonItem.init(
               title: "Главный экран",
               style: .done,
-              target: dismiss(animated:true) ,
-              action: Selector(("rightButtonAction:"))
+            target: self,
+            action: #selector(rightButtonAction(sender:))
         )
         
         self.navigationItem.rightBarButtonItem = rightButtonItem
         self.navigationItem.setHidesBackButton(true, animated: false)
+    }
+    
+    @objc func rightButtonAction(sender: UIBarButtonItem) {
+        performSegue(withIdentifier: "mainVC", sender: nil)
     }
     
     override func viewDidLoad() {
@@ -97,7 +101,9 @@ class ResultTableViewController: UITableViewController {
             content.image = UIImage(named: wrongQueston.image)
             content.imageProperties.cornerRadius = 13
             
+            cell.accessoryType = .disclosureIndicator
             cell.contentConfiguration = content
+            
             return cell
         }
     }
