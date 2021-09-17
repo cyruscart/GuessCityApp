@@ -50,6 +50,7 @@ class MainViewController: UIViewController {
         view.addVerticalGradientLayer(topColor: primaryColor, bottomColor: secondaryColor)
         
         answerButtons.forEach{$0.layer.cornerRadius = 7}
+        answerButtons.forEach{$0.setTitle("", for: .normal)}
         
         cityImageView.layer.cornerRadius = 13
         nextCityImageView.layer.cornerRadius = 13
@@ -77,13 +78,14 @@ class MainViewController: UIViewController {
     
     @IBAction func startButtonPressed() {
         
-        changeShowingStackView()
-        
         cities = City.getCities()
         
-        cityImageView.image = UIImage(named: "\(cities[currentQuestion].image)")
+        changeShowingStackView()
         
         updateButtons(cityNamesList: createCityNameListForButtons())
+        
+        
+        cityImageView.image = UIImage(named: "\(cities[currentQuestion].image)")
         
         navigationController?.setNavigationBarHidden(true, animated: false)
         
@@ -142,11 +144,12 @@ extension MainViewController {
         
         let cityNamesForAnswers = City.getCityList(type: cities[currentQuestion].type)
         
+        
         for index in 0..<cityNamesForAnswers.count {
             if cityNames.first != cityNamesForAnswers[index] && cityNames.count != 4 {
                 cityNames.append(cityNamesForAnswers[index])
             } else if cityNames.count == 4 {
-                break       
+                break
             }
         }
         
