@@ -124,7 +124,12 @@ class MainViewController: UIViewController {
             changeShowingStackView()
         }
     }
+    
+    @IBAction func unwind(for unwindSegue: UIStoryboardSegue) {
+        
+    }
 }
+
 
 //MARK: - Private functions
 extension MainViewController {
@@ -185,6 +190,8 @@ extension MainViewController {
         }
     }
 }
+
+
 
 // MARK: - Set background color
 

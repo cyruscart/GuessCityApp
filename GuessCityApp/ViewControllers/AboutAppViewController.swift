@@ -70,7 +70,9 @@ class AboutAppViewController: UITableViewController {
             content.image = UIImage(named: developer.email)
             content.imageProperties.cornerRadius = tableView.rowHeight / 2
             
+            cell.accessoryType = .disclosureIndicator
             cell.contentConfiguration = content
+            
             return cell
         }
     }
