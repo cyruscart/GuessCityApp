@@ -17,21 +17,6 @@ class ResultTableViewController: UITableViewController {
     var resultCity: [City]!
     var numbersOfQuestions: Int = 0
     
-    
-    private let primaryColor = UIColor(
-        red: 255/255,
-        green: 255/255,
-        blue: 255/255,
-        alpha: 1
-    )
-    
-    private let secondaryColor = UIColor(
-        red: 25/255,
-        green: 33/255,
-        blue: 78/255,
-        alpha: 1
-    )
-    
     override func viewWillAppear(_ animated: Bool) {
         let rightButtonItem = UIBarButtonItem.init(
               title: "Начать заново",
@@ -39,29 +24,22 @@ class ResultTableViewController: UITableViewController {
 
             target: self,
             action: #selector(rightButtonAction(sender:))
-
         )
         
-        self.navigationItem.rightBarButtonItem = rightButtonItem
-        self.navigationItem.setHidesBackButton(true, animated: false)
+        navigationItem.rightBarButtonItem = rightButtonItem
+        navigationItem.setHidesBackButton(true, animated: false)
     }
-    
     
     @objc func rightButtonAction(sender: UIBarButtonItem) {
         performSegue(withIdentifier: "mainVC", sender: nil)
     }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.rowHeight = 70
         tableView.tableFooterView = UIView()
-        
-       
     }
-    
-
     
     // MARK: - Table view data source
     
@@ -84,6 +62,15 @@ class ResultTableViewController: UITableViewController {
         case 0:
             if let cell = tableView.dequeueReusableCell(withIdentifier: "ResultCell", for: indexPath) as? FirstResultCell {
                 
+                if numbersOfRightQuestions == 0 {
+                    cell.resultLabel.text =
+                        """
+                        Упс!!
+                        Правильных ответов нет...
+                        Может стоит потренироваться еще?
+                        """
+                    cell.wrongAnswersLabel.text = "Неправильные ответы:"
+                } else {
                 if numbersOfQuestions == numbersOfRightQuestions {
                     cell.resultLabel.text =
                         """
@@ -91,22 +78,24 @@ class ResultTableViewController: UITableViewController {
                         Вы ответили правильно на все вопросы!
                         """
                     cell.wrongAnswersLabel.text = ""
-                
+                    
                 } else {
-                cell.resultLabel.text =
-                    """
-                    Поздравляем!!!
-                    Вы ответили правильно на
-                    \(numbersOfRightQuestions) из \(numbersOfQuestions)
-                    вопросов!
-                    """
-                
-                cell.wrongAnswersLabel.text = "Неправильные ответы:"
+                    cell.resultLabel.text =
+                        """
+                        Поздравляем!!!
+                        Вы ответили правильно на
+                        \(numbersOfRightQuestions) из \(numbersOfQuestions)
+                        вопросов!
+                        """
+                    
+                    cell.wrongAnswersLabel.text = "Неправильные ответы:"
+                }
                 }
                 return cell
             } else {
                 fallthrough
             }
+                
             
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: "WrongAnswersCell", for: indexPath)
