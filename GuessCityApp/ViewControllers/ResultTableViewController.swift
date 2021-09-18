@@ -34,7 +34,7 @@ class ResultTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         let rightButtonItem = UIBarButtonItem.init(
-              title: "Главный экран",
+              title: "Начать заново",
               style: .done,
 
             target: self,
@@ -46,9 +46,11 @@ class ResultTableViewController: UITableViewController {
         self.navigationItem.setHidesBackButton(true, animated: false)
     }
     
+    
     @objc func rightButtonAction(sender: UIBarButtonItem) {
         performSegue(withIdentifier: "mainVC", sender: nil)
     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()

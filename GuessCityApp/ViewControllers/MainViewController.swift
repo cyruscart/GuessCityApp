@@ -9,6 +9,7 @@ import UIKit
 
 class MainViewController: UIViewController {
     
+    
     @IBOutlet weak var firstStackView: UIStackView!
     
     @IBOutlet weak var secondStackView: UIStackView!
@@ -28,7 +29,7 @@ class MainViewController: UIViewController {
     
     private var currentQuestion = 0
     
-    private var wrongAnswers: [City] = []
+    var wrongAnswers: [City] = []
     
     private let primaryColor = UIColor(
         red: 255/255,
@@ -101,7 +102,9 @@ class MainViewController: UIViewController {
             sender.backgroundColor = .systemGreen
         }
         
+        
         if currentQuestion < Settings.shared.amountOfQuestion - 1 {
+            
             flipCityImage(current: currentQuestion)
             
             UIView.animate(withDuration: 0.6,delay: 0.6, animations: {sender.backgroundColor = .darkGray})
@@ -115,6 +118,8 @@ class MainViewController: UIViewController {
             cityImageView.image = UIImage(named: "\(cities[currentQuestion].image)")
             
         } else {
+            
+            
             performSegue(withIdentifier: "showResult", sender: nil)
             
             navigationController?.setNavigationBarHidden(false, animated: false)
@@ -122,11 +127,12 @@ class MainViewController: UIViewController {
             isNavBarNeedShow = !isNavBarNeedShow
             
             changeShowingStackView()
+            
         }
     }
     
     @IBAction func unwind(for unwindSegue: UIStoryboardSegue) {
-        
+        updateValuesForNewGame()
     }
 }
 
@@ -149,7 +155,6 @@ extension MainViewController {
         
         let cityNamesForAnswers = City.getCityList(type: cities[currentQuestion].type)
         
-        
         for index in 0..<cityNamesForAnswers.count {
             if cityNames.first != cityNamesForAnswers[index] && cityNames.count != 4 {
                 cityNames.append(cityNamesForAnswers[index])
@@ -157,7 +162,6 @@ extension MainViewController {
                 break
             }
         }
-        
         return cityNames.shuffled()
     }
     
@@ -185,9 +189,17 @@ extension MainViewController {
     }
     
     private func changeShowingStackView() {
+        
         for view in [firstStackView, secondStackView, questionProgressView] {
             view?.isHidden.toggle()
         }
+    }
+    
+    private func updateValuesForNewGame() {
+        wrongAnswers = []
+        currentQuestion = 0
+        answerButtons.forEach {$0.backgroundColor = .darkGray}
+        questionProgressView.setProgress(0, animated: false)
     }
 }
 
