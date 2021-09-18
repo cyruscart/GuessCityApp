@@ -82,18 +82,19 @@ class MainViewController: UIViewController {
         
         cities = City.getCities()
         
-        updateButtons(cityNamesList: createCityNameListForButtons())
+       cities.forEach { print($0.name)}
         
         changeShowingStackView()
         
-        
-        
-        
-        cityImageView.image = UIImage(named: "\(cities[currentQuestion].image)")
+        updateButtons(cityNamesList: createCityNameListForButtons())
         
         navigationController?.setNavigationBarHidden(true, animated: false)
         
         isNavBarNeedShow = !isNavBarNeedShow
+        
+        cityImageView.image = UIImage(named: "\(cities[currentQuestion].image)")
+        
+        nextCityImageView.image = UIImage(named: "\(cities[currentQuestion].image)")
     }
     
     @IBAction func answerButtonPressed(_ sender: UIButton) {
