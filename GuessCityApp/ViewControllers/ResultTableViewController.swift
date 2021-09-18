@@ -95,7 +95,6 @@ class ResultTableViewController: UITableViewController {
                 } else {
                 cell.resultLabel.text =
                     """
-                    Поздравляем!!!
                     Вы ответили правильно на
                     \(numbersOfRightQuestions) из \(numbersOfQuestions)
                     вопросов!
