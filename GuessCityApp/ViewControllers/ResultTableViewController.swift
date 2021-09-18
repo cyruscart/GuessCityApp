@@ -36,8 +36,10 @@ class ResultTableViewController: UITableViewController {
         let rightButtonItem = UIBarButtonItem.init(
               title: "Главный экран",
               style: .done,
+
             target: self,
             action: #selector(rightButtonAction(sender:))
+
         )
         
         self.navigationItem.rightBarButtonItem = rightButtonItem
@@ -53,7 +55,11 @@ class ResultTableViewController: UITableViewController {
         
         tableView.rowHeight = 70
         tableView.tableFooterView = UIView()
+        
+       
     }
+    
+
     
     // MARK: - Table view data source
     
@@ -76,7 +82,16 @@ class ResultTableViewController: UITableViewController {
         case 0:
             if let cell = tableView.dequeueReusableCell(withIdentifier: "ResultCell", for: indexPath) as? FirstResultCell {
                 
-                cell.resultLabel.text = 
+                if numbersOfQuestions == numbersOfRightQuestions {
+                    cell.resultLabel.text =
+                        """
+                        Поздравляем!!!
+                        Вы ответили правильно на все вопросы!
+                        """
+                    cell.wrongAnswersLabel.text = ""
+                
+                } else {
+                cell.resultLabel.text =
                     """
                     Поздравляем!!!
                     Вы ответили правильно на
@@ -85,7 +100,7 @@ class ResultTableViewController: UITableViewController {
                     """
                 
                 cell.wrongAnswersLabel.text = "Неправильные ответы:"
-                
+                }
                 return cell
             } else {
                 fallthrough
@@ -127,7 +142,7 @@ class ResultTableViewController: UITableViewController {
 }
 // MARK: - Set background color
 
-extension UIView {
+extension UITableView {
     func setResultVerticalGradientLayer(topColor: UIColor, bottomColor: UIColor) {
         let gradient = CAGradientLayer()
         gradient.frame = bounds
@@ -136,5 +151,6 @@ extension UIView {
         gradient.startPoint = CGPoint(x: 0, y: 0)
         gradient.endPoint = CGPoint(x: 0, y: 1)
         layer.insertSublayer(gradient, at: 0)
+        
     }
 }
