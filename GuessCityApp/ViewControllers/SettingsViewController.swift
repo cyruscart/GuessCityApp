@@ -8,11 +8,13 @@
 import UIKit
 
 class AmountOfQuestionCell: UITableViewCell {
+    
     @IBOutlet weak var questionSlider: UISlider!
     @IBOutlet weak var questionLabel: UILabel!
+    
     @IBAction func sliderMoved() {
-        Settings.shared.amountOfQuestion = lrintf(questionSlider.value)
-        questionLabel.text = String(Settings.shared.amountOfQuestion)
+        Settings.shared.amountOfQuestion = questionSlider.value
+        questionLabel.text = String(lrintf(Settings.shared.amountOfQuestion))
     }
 }
 
@@ -46,7 +48,7 @@ class SettingsViewController: UITableViewController {
         switch indexPath.section {
         case 0:
             if let cell = tableView.dequeueReusableCell(withIdentifier: "slider") as? AmountOfQuestionCell {
-                cell.questionLabel.text = String(Settings.shared.amountOfQuestion)
+                cell.questionLabel.text = String(lrintf(Settings.shared.amountOfQuestion))
                 cell.questionSlider.value = Float(Settings.shared.amountOfQuestion)
                 
                 currentCell = cell

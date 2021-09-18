@@ -12,7 +12,7 @@ class Settings {
     
     static let shared = Settings()
     
-    var amountOfQuestion = 10
+    var amountOfQuestion: Float = 10
     
     var cityOptionChoice = CityType.onlyRus.rawValue
     

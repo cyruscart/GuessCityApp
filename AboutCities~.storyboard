@@ -3,7 +3,6 @@
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
-        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -198,7 +197,6 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="gAN-9B-MZ3">
                         <barButtonItem key="rightBarButtonItem" title="Настройки" id="QKd-L2-3kY">
-                            <imageReference key="image" image="gearshape" catalog="system" symbolScale="large"/>
                             <connections>
                                 <segue destination="lv5-YS-YJQ" kind="show" id="1N8-2g-ITf"/>
                             </connections>
@@ -211,8 +209,8 @@
                     </tabBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="MQF-ye-QwI"/>
-                        <segue destination="Tib-sX-ERD" kind="relationship" relationship="viewControllers" id="Zir-s6-uY8"/>
                         <segue destination="zUW-BT-MzG" kind="relationship" relationship="viewControllers" id="DWk-0M-lDX"/>
+                        <segue destination="64x-lb-MsJ" kind="relationship" relationship="viewControllers" id="RId-ON-lBd"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XrY-cb-hmJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -227,7 +225,23 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TjE-Mn-NTp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2514" y="87"/>
+            <point key="canvasLocation" x="2710" y="88"/>
+        </scene>
+        <!--О городах-->
+        <scene sceneID="7bV-Z6-X68">
+            <objects>
+                <viewController id="64x-lb-MsJ" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7Mq-Tm-VgW">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="3uS-BP-v1Y"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="О городах" id="rgl-X4-ubw"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2QK-la-Mqv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="939" y="1004"/>
         </scene>
         <!--AboutApp-->
         <scene sceneID="n2q-DL-A7l">
@@ -237,7 +251,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fmh-rx-mdM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1173" y="658"/>
+            <point key="canvasLocation" x="2082" y="682"/>
         </scene>
         <!--Settings-->
         <scene sceneID="dNA-la-DE3">
@@ -247,21 +261,10 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xdr-V9-Wo7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1472" y="-361"/>
-        </scene>
-        <!--AboutCities-->
-        <scene sceneID="iA5-NS-UcY">
-            <objects>
-                <viewControllerPlaceholder storyboardName="AboutCities" id="Tib-sX-ERD" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="sFa-2s-aI0"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dGj-D5-vzh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="939" y="1029"/>
+            <point key="canvasLocation" x="1473" y="-516"/>
         </scene>
     </scenes>
     <resources>
-        <image name="gearshape" catalog="system" width="128" height="121"/>
         <image name="map" catalog="system" width="128" height="110"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

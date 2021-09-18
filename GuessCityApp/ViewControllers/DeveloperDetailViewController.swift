@@ -26,6 +26,7 @@ class DeveloperDetailViewController: UIViewController {
         title = "Разработчики"
         
         photo.image = UIImage(named: developer.email)
+        photo.layer.cornerRadius = 15
         
         fullNameLabel.text = developer.fullName
         positionLabel.text = developer.futurePosition

@@ -74,7 +74,7 @@ class MainViewController: UIViewController {
         guard let resultVC = segue.destination as? ResultTableViewController else { return }
         
         resultVC.resultCity = wrongAnswers
-        resultVC.numbersOfQuestions = Settings.shared.amountOfQuestion
+        resultVC.numbersOfQuestions = lrintf(Settings.shared.amountOfQuestion)
     }
     
     @IBAction func startButtonPressed() {
@@ -103,17 +103,15 @@ class MainViewController: UIViewController {
         }
         
         
-        if currentQuestion < Settings.shared.amountOfQuestion - 1 {
+        if currentQuestion < lrintf(Settings.shared.amountOfQuestion) - 1 {
+            
+            updateProgressView()
             
             currentQuestion += 1
             
             flipCityImage(current: currentQuestion)
             
             UIView.animate(withDuration: 0.3,delay: 0.3, animations: {sender.backgroundColor = .darkGray})
-            
-            updateProgressView()
-            
-            
             
             nextCityImageView.image = UIImage(named: "\(cities[currentQuestion].image)")
             
@@ -187,7 +185,7 @@ extension MainViewController {
                           duration: 0.7,
                           options:[.curveEaseOut, .transitionFlipFromLeft, .showHideTransitionViews])
         
-         updateButtons(cityNamesList: createCityNameListForButtons())
+        updateButtons(cityNamesList: createCityNameListForButtons())
     }
     
     private func changeShowingStackView() {
