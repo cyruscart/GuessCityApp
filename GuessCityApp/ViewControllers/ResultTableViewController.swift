@@ -17,6 +17,21 @@ class ResultTableViewController: UITableViewController {
     var resultCity: [City]!
     var numbersOfQuestions: Int = 0
     
+    
+    private let primaryColor = UIColor(
+        red: 255/255,
+        green: 255/255,
+        blue: 255/255,
+        alpha: 1
+    )
+    
+    private let secondaryColor = UIColor(
+        red: 25/255,
+        green: 33/255,
+        blue: 78/255,
+        alpha: 1
+    )
+    
     override func viewWillAppear(_ animated: Bool) {
         let rightButtonItem = UIBarButtonItem.init(
               title: "Начать заново",
@@ -24,24 +39,30 @@ class ResultTableViewController: UITableViewController {
 
             target: self,
             action: #selector(rightButtonAction(sender:))
+
         )
         
         self.navigationItem.rightBarButtonItem = rightButtonItem
         self.navigationItem.setHidesBackButton(true, animated: false)
     }
     
+    
     @objc func rightButtonAction(sender: UIBarButtonItem) {
         performSegue(withIdentifier: "mainVC", sender: nil)
     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.rowHeight = 70
         tableView.tableFooterView = UIView()
+        
+       
     }
     
 
+    
     // MARK: - Table view data source
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -127,5 +148,17 @@ class ResultTableViewController: UITableViewController {
         
     }
 }
+// MARK: - Set background color
 
-
+extension UITableView {
+    func setResultVerticalGradientLayer(topColor: UIColor, bottomColor: UIColor) {
+        let gradient = CAGradientLayer()
+        gradient.frame = bounds
+        gradient.colors = [topColor.cgColor, bottomColor.cgColor]
+        gradient.locations = [0.0, 1.0]
+        gradient.startPoint = CGPoint(x: 0, y: 0)
+        gradient.endPoint = CGPoint(x: 0, y: 1)
+        layer.insertSublayer(gradient, at: 0)
+        
+    }
+}
