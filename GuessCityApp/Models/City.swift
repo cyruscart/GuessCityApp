@@ -65,5 +65,16 @@ extension City {
         }
         return cities
     }
+    
+    static func getAllCities() -> [City] {
+        var cities: [City] = []
+        
+        let allCities = DataManager.shared.allCities
+        
+        for city in allCities {
+            cities.append(city)
+        }
+        return cities
+    }
 }
 
