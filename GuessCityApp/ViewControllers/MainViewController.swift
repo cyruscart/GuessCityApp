@@ -91,6 +91,8 @@ class MainViewController: UIViewController {
         navigationController?.setNavigationBarHidden(true, animated: false)
         
         isNavBarNeedShow = !isNavBarNeedShow
+        
+        nextCityImageView.image = UIImage(named: "\(cities[currentQuestion].image)")
     }
     
     @IBAction func answerButtonPressed(_ sender: UIButton) {
