@@ -105,13 +105,15 @@ class MainViewController: UIViewController {
         
         if currentQuestion < Settings.shared.amountOfQuestion - 1 {
             
+            currentQuestion += 1
+            
             flipCityImage(current: currentQuestion)
             
-            UIView.animate(withDuration: 0.6,delay: 0.6, animations: {sender.backgroundColor = .darkGray})
+            UIView.animate(withDuration: 0.3,delay: 0.3, animations: {sender.backgroundColor = .darkGray})
             
             updateProgressView()
             
-            currentQuestion += 1
+            
             
             nextCityImageView.image = UIImage(named: "\(cities[currentQuestion].image)")
             
@@ -182,10 +184,10 @@ extension MainViewController {
         
         UIView.transition(from: fromImage!,
                           to: toImage!,
-                          duration: 0.8,
-                          options:[.curveEaseOut, .transitionFlipFromLeft, .showHideTransitionViews], completion: {
-                            _ in self.updateButtons(cityNamesList: self.createCityNameListForButtons())}
-        )
+                          duration: 0.7,
+                          options:[.curveEaseOut, .transitionFlipFromLeft, .showHideTransitionViews])
+        
+         updateButtons(cityNamesList: createCityNameListForButtons())
     }
     
     private func changeShowingStackView() {

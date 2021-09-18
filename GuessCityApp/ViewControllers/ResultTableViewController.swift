@@ -88,10 +88,17 @@ class ResultTableViewController: UITableViewController {
                     cell.resultLabel.text =
                         """
                         Поздравляем!!!
-                        Вы ответили правильно на все вопросы!
+                        Вы ответили правильно на все вопросы! 💪
                         """
                     cell.wrongAnswersLabel.text = ""
                 
+                } else if numbersOfRightQuestions == 0 {
+                cell.resultLabel.text =
+                    """
+                    Вы ответили на все вопросы неправильно! 😕
+                    """
+                    cell.wrongAnswersLabel.text = "Неправильные ответы:"
+                    
                 } else {
                 cell.resultLabel.text =
                     """
