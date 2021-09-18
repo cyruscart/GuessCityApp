@@ -51,7 +51,8 @@ class MainViewController: UIViewController {
         view.addVerticalGradientLayer(topColor: primaryColor, bottomColor: secondaryColor)
         
         answerButtons.forEach{$0.layer.cornerRadius = 7}
-        answerButtons.forEach{$0.setTitle("", for: .normal)}
+        
+        clearButtonsText()
         
         cityImageView.layer.cornerRadius = 13
         nextCityImageView.layer.cornerRadius = 13
@@ -81,9 +82,11 @@ class MainViewController: UIViewController {
         
         cities = City.getCities()
         
+        updateButtons(cityNamesList: createCityNameListForButtons())
+        
         changeShowingStackView()
         
-        updateButtons(cityNamesList: createCityNameListForButtons())
+        
         
         
         cityImageView.image = UIImage(named: "\(cities[currentQuestion].image)")
@@ -117,9 +120,8 @@ class MainViewController: UIViewController {
             
             cityImageView.image = UIImage(named: "\(cities[currentQuestion].image)")
             
+            
         } else {
-            
-            
             performSegue(withIdentifier: "showResult", sender: nil)
             
             navigationController?.setNavigationBarHidden(false, animated: false)
@@ -127,6 +129,8 @@ class MainViewController: UIViewController {
             isNavBarNeedShow = !isNavBarNeedShow
             
             changeShowingStackView()
+            
+            answerButtons.forEach{$0.setTitle("", for: .normal)}
             
         }
     }
@@ -200,6 +204,10 @@ extension MainViewController {
         currentQuestion = 0
         answerButtons.forEach {$0.backgroundColor = .darkGray}
         questionProgressView.setProgress(0, animated: false)
+    }
+    
+    private func clearButtonsText() {
+        answerButtons.forEach{$0.setTitle("", for: .normal)}
     }
 }
 
