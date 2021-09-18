@@ -86,9 +86,6 @@ class MainViewController: UIViewController {
         
         changeShowingStackView()
         
-        
-        
-        
         cityImageView.image = UIImage(named: "\(cities[currentQuestion].image)")
         
         navigationController?.setNavigationBarHidden(true, animated: false)
