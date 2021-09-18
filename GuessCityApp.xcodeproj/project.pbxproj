@@ -21,6 +21,8 @@
 		882D776126EFCF39004D8685 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882D776026EFCF39004D8685 /* City.swift */; };
 		8838E4BF26F2856B00FFFEA7 /* ResultTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8838E4BE26F2856B00FFFEA7 /* ResultTableViewController.swift */; };
 		8838E4C126F3BCC400FFFEA7 /* AboutCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8838E4C026F3BCC400FFFEA7 /* AboutCityViewController.swift */; };
+		88D6EAF226F6476B000E1B3A /* CityLibraryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D6EAF126F6476B000E1B3A /* CityLibraryTableViewController.swift */; };
+		88D6EAF426F6616A000E1B3A /* LibraryCityInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D6EAF326F6616A000E1B3A /* LibraryCityInfoViewController.swift */; };
 		9C16986B26F12A820024CBF1 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C16986A26F12A820024CBF1 /* TabBarViewController.swift */; };
 		9CFFB35326F27A5A0091F7FF /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFFB35226F27A5A0091F7FF /* Settings.swift */; };
 		9CFFEF5B26EFD9D5000E839F /* AboutAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFFEF5926EFD9D5000E839F /* AboutAppViewController.swift */; };
@@ -47,6 +49,8 @@
 		882D776026EFCF39004D8685 /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		8838E4BE26F2856B00FFFEA7 /* ResultTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultTableViewController.swift; sourceTree = "<group>"; };
 		8838E4C026F3BCC400FFFEA7 /* AboutCityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutCityViewController.swift; sourceTree = "<group>"; };
+		88D6EAF126F6476B000E1B3A /* CityLibraryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityLibraryTableViewController.swift; sourceTree = "<group>"; };
+		88D6EAF326F6616A000E1B3A /* LibraryCityInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryCityInfoViewController.swift; sourceTree = "<group>"; };
 		9C16986A26F12A820024CBF1 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		9CFFB35226F27A5A0091F7FF /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Settings.swift; path = ../ViewControllers/Settings.swift; sourceTree = "<group>"; };
 		9CFFEF5926EFD9D5000E839F /* AboutAppViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutAppViewController.swift; sourceTree = "<group>"; };
@@ -127,6 +131,8 @@
 				6EFBDAC726F2219300D04756 /* SettingsViewController.swift */,
 				8838E4BE26F2856B00FFFEA7 /* ResultTableViewController.swift */,
 				8838E4C026F3BCC400FFFEA7 /* AboutCityViewController.swift */,
+				88D6EAF126F6476B000E1B3A /* CityLibraryTableViewController.swift */,
+				88D6EAF326F6616A000E1B3A /* LibraryCityInfoViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -243,11 +249,13 @@
 				882D775F26EFCF0C004D8685 /* DataManager.swift in Sources */,
 				9CFFEF5B26EFD9D5000E839F /* AboutAppViewController.swift in Sources */,
 				9CFFEF6026EFDB68000E839F /* Developer.swift in Sources */,
+				88D6EAF226F6476B000E1B3A /* CityLibraryTableViewController.swift in Sources */,
 				882D776126EFCF39004D8685 /* City.swift in Sources */,
 				6EFBD7AD26EC95C700D04756 /* AppDelegate.swift in Sources */,
 				9CFFEF6226EFDBBC000E839F /* DataDeveloper.swift in Sources */,
 				9C16986B26F12A820024CBF1 /* TabBarViewController.swift in Sources */,
 				6EFBD7AF26EC95C700D04756 /* SceneDelegate.swift in Sources */,
+				88D6EAF426F6616A000E1B3A /* LibraryCityInfoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
