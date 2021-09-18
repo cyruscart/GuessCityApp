@@ -82,8 +82,6 @@ class MainViewController: UIViewController {
         
         cities = City.getCities()
         
-       cities.forEach { print($0.name)}
-        
         changeShowingStackView()
         
         updateButtons(cityNamesList: createCityNameListForButtons())
