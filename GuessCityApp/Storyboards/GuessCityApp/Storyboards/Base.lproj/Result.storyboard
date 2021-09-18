@@ -79,8 +79,12 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="1Vd-Jw-bfa"/>
+                    <connections>
+                        <segue destination="pUB-jB-pvo" kind="unwind" identifier="mainVC" unwindAction="unwindFor:" id="fmV-Dj-5gx"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zzj-ue-qRx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="pUB-jB-pvo" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2707.5" y="87.676056338028175"/>
         </scene>
