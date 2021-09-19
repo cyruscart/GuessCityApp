@@ -48,6 +48,7 @@ class SettingsViewController: UITableViewController {
         switch indexPath.section {
         case 0:
             if let cell = tableView.dequeueReusableCell(withIdentifier: "slider") as? AmountOfQuestionCell {
+                
                 cell.questionLabel.text = String(lrintf(Settings.shared.amountOfQuestion))
                 cell.questionSlider.value = Float(Settings.shared.amountOfQuestion)
                 

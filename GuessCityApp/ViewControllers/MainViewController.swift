@@ -21,15 +21,7 @@ class MainViewController: UIViewController {
     
     @IBOutlet var answerButtons: [UIButton]!
     
-    var cities: [City]!
-    
-    private var isOddImage = true
-    
-    private var isNavBarNeedShow = true
-    
-    private var currentQuestion = 0
-    
-    var wrongAnswers: [City] = []
+    private var wrongAnswers: [City] = []
     
     private let primaryColor = UIColor(
         red: 255/255,
@@ -44,6 +36,14 @@ class MainViewController: UIViewController {
         blue: 78/255,
         alpha: 1
     )
+    
+    private var cities: [City]!
+    
+    private var isOddImage = true
+    
+    private var isNavBarNeedShow = true
+    
+    private var currentQuestion = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,7 +60,6 @@ class MainViewController: UIViewController {
         
         questionProgressView.isHidden = true
         secondStackView.isHidden = true
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -75,7 +74,6 @@ class MainViewController: UIViewController {
         guard let resultVC = segue.destination as? ResultTableViewController else { return }
         
         resultVC.resultCity = wrongAnswers
-        resultVC.numbersOfQuestions = lrintf(Settings.shared.amountOfQuestion)
     }
     
     @IBAction func startButtonPressed() {
@@ -84,7 +82,6 @@ class MainViewController: UIViewController {
         
         changeShowingStackView()
         
-
         updateButtons(cityNamesList: createCityNameListForButtons())
         
         navigationController?.setNavigationBarHidden(true, animated: false)
@@ -105,7 +102,6 @@ class MainViewController: UIViewController {
             sender.backgroundColor = .systemGreen
         }
         
-        
         if currentQuestion < lrintf(Settings.shared.amountOfQuestion) - 1 {
             
             updateProgressView()
@@ -120,7 +116,6 @@ class MainViewController: UIViewController {
             
             cityImageView.image = UIImage(named: "\(cities[currentQuestion].image)")
             
-            
         } else {
             performSegue(withIdentifier: "showResult", sender: nil)
             
@@ -131,7 +126,6 @@ class MainViewController: UIViewController {
             changeShowingStackView()
             
             answerButtons.forEach{$0.setTitle("", for: .normal)}
-            
         }
     }
     
@@ -140,8 +134,8 @@ class MainViewController: UIViewController {
     }
 }
 
+//MARK: - Private methods
 
-//MARK: - Private functions
 extension MainViewController {
     
     private func updateButtons(cityNamesList: [String]) {

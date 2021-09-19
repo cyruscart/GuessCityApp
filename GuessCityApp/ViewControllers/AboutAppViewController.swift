@@ -14,6 +14,8 @@ class FirstDescriptionCell: UITableViewCell {
 
 class AboutAppViewController: UITableViewController {
     
+    var developers: [Developer]!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -27,8 +29,6 @@ class AboutAppViewController: UITableViewController {
         
         navigationController?.setNavigationBarHidden(true, animated: false)
     }
-    
-    var developers: [Developer]!
     
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

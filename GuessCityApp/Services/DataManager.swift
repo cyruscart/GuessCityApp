@@ -8,11 +8,11 @@
 import Foundation
 
 enum CityType: String, CaseIterable {
-     case onlyRus = "Города России"
-     case onlyForeign = "Зарубежные города"
-     case all = "Все города"
+    case onlyRus = "Города России"
+    case onlyForeign = "Зарубежные города"
+    case all = "Все города"
 }
-    
+
 class DataManager {
     
     static let shared = DataManager()
@@ -199,6 +199,10 @@ class DataManager {
             description: "Ижевск – крупный город, который располагается в самом сердце Удмуртии, являясь важным административным, экономическим, транспортным, торговым центром республики.",
             type: CityType.onlyRus.rawValue
         ),
+        City(name: "Майкоп",
+             image: "Maykop",
+             description: "Город Майкоп основан в 1857 году. Поселение, выросшее из крепости, было обустроено на правом берегу реки Белой. По наиболее распространенной версии, название города происходит от адыгского слова «Мыекъуапэ» - долина яблонь. Майкоп – один из самых красивых и благоустроенных городов Северного Кавказа, административный и культурный центр Республики Адыгея.",
+             type: CityType.onlyRus.rawValue)
     ]
     
     let foreignCities =  [

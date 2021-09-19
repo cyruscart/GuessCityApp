@@ -15,7 +15,6 @@ class DeveloperDetailViewController: UIViewController {
     @IBOutlet var ageLabel: UILabel!
     @IBOutlet var emailLabel: UILabel!
     @IBOutlet weak var telegramLabel: UILabel!
-    
     @IBOutlet weak var photo: UIImageView!
     
     var developer: Developer!

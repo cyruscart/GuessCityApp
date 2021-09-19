@@ -26,7 +26,7 @@ class DataDeveloper {
                 city: "Омск",
                 age: 32,
                 email: "mr.tks@yandex.ru",
-                futurePosition: "Будущий junior iOS-developer",
+                futurePosition: "iOS-developer",
                 telegram: "@mr_tks"
             ),
             DataDeveloper(
@@ -35,7 +35,7 @@ class DataDeveloper {
                 city: "Тюмень",
                 age: 30,
                 email: "pavlov.tema@gmail.com",
-                futurePosition: "Будущий junior iOS-developer",
+                futurePosition: "iOS-developer",
                 telegram: "@pavlov_art"
             ),
             DataDeveloper(
@@ -44,7 +44,7 @@ class DataDeveloper {
                 city: "Москва",
                 age: 27,
                 email: "x7.7@bk.ru",
-                futurePosition: "Будущий junior iOS-developer",
+                futurePosition: "iOS-developer",
                 telegram: "@Anatolii_Mir"
             )
         ]
