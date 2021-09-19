@@ -84,6 +84,7 @@ class MainViewController: UIViewController {
         
         changeShowingStackView()
         
+
         updateButtons(cityNamesList: createCityNameListForButtons())
         
         navigationController?.setNavigationBarHidden(true, animated: false)
