@@ -60,7 +60,6 @@ class SettingsViewController: UITableViewController {
             var content = cell.defaultContentConfiguration()
             
             content.text = Settings.shared.cityOptions[indexPath.row]
-            
             cell.contentConfiguration = content
             
             if Settings.shared.cityOptionChoice == Settings.shared.cityOptions[indexPath.row] {

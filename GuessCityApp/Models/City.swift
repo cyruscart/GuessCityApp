@@ -25,7 +25,9 @@ extension City {
         let foreignCities = DataManager.shared.foreignCities.shuffled()
         
         switch Settings.shared.cityOptionChoice {
+        
         case CityType.onlyRus.rawValue:
+            
             for city in russianCities {
                 cities.append(city)
             }
