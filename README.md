@@ -2,7 +2,8 @@
 
 ### SwiftBook homework 2.8
 
-Игра-викторина по отгадыванию городов по фотографии
+Игра-викторина по отгадыванию городов по фотографии.
+Разработано в команде с https://github.com/ArtemPavlov72, https://github.com/Anatolii-sx/GwentCardGameMVVM
 
 ![2](https://user-images.githubusercontent.com/89061511/149821956-554fd230-a517-4692-925b-dd0860afb3b9.png)
 ![3](https://user-images.githubusercontent.com/89061511/149821961-4b4db502-d4ab-444e-9ac1-ee02afd7f80f.png)
